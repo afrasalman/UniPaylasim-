@@ -1,0 +1,910 @@
+/* ======== GENEL AYARLAR ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f7fb;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ======== NAVBAR ======== */
+.navbar {
+  background-color: #0a3d62;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: #74b9ff;
+}
+
+.auth-buttons a {
+  background-color: white;
+  color: #0a3d62;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-left: 8px;
+  transition: 0.3s;
+}
+
+.auth-buttons a:hover {
+  background-color: #74b9ff;
+  color: white;
+}
+
+/* ======== HERO ======== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 100px;
+  background: linear-gradient(120deg, #566067 45%, #74b9ff 100%);
+  color: white;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.hero-buttons .btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.btn.primary {
+  background-color: white;
+  color: #0a3d62;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.hero-image img {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+/* ======== ABOUT ======== */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  gap: 40px;
+  flex-wrap: nowrap;
+  background-color: #f9fafc;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h1 {
+  font-size: 32px;
+  color: #103b68;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.about-buttons {
+  margin-top: 20px;
+}
+
+.about-buttons .btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-decoration: none;
+  margin-right: 10px;
+  display: inline-block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn.primary {
+  background-color: #103b68;
+  color: #103b68;
+}
+
+.btn.secondary {
+  background-color: #103b68;
+  color: #103b68;
+}
+
+.btn.primary:hover {
+  background-color: #14548c;
+}
+
+.btn.secondary:hover {
+  background-color: #14548c;
+}
+
+.about-image {
+  flex: 1;
+  text-align: right;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+}
+/* ======== NOTLAR SAYFASI (YENİ TASARIM) ======== */
+.notes-page {
+  padding: 70px 100px;
+  background-color: #f4f7fb;
+}
+
+.notes-page h1 {
+  font-size: 36px;
+  color: #0a3d62;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.notes-page p {
+  font-size: 18px;
+  color: #2d3436;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.notes-page .search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.notes-page .search-box input {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.notes-page .search-box button {
+  background-color: #0a3d62;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.notes-page .search-box button:hover {
+  background-color: #14548c;
+}
+
+/* --- GRID DÜZENİ --- */
+.notes-page .note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  align-items: start;
+}
+
+.notes-page .note-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+  width: 100%;
+  max-width: 360px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.notes-page .note-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.notes-page .note-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notes-page .note-tag {
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.notes-page .note-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.notes-page .note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.notes-page .btn-download {
+  background-color: #0a3d62;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notes-page .btn-download:hover {
+  background-color: #1e5f97;
+}
+
+/* --- YORUMLAR --- */
+.notes-page .comment-section {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 15px;
+  padding-top: 10px;
+  background-color: #f9fafc;
+  border-radius: 8px;
+}
+
+.notes-page .comment-form {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.notes-page .comment-form input {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  padding: 7px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.notes-page .comment-form button {
+  background-color: #0a3d62;
+  color: #fff;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notes-page .comment-form button:hover {
+  background-color: #1e5f97;
+}
+
+/* ======== HOW IT WORKS ======== */
+.how-it-works {
+  padding: 80px 100px;
+  background: white;
+}
+/* ======== PROFİL SAYFASI ======== */
+.profile-page {
+  padding: 80px 100px;
+  background: #f4f7fb;
+  min-height: 80vh;
+}
+
+.profile-container {
+  background: white;
+  max-width: 700px;
+  margin: auto;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.profile-container h1 {
+  color: #0a3d62;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.profile-subtitle {
+  color: #636e72;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.profile-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid #0a3d62;
+  object-fit: cover;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+  text-align: left;
+  line-height: 1.8;
+  font-size: 16px;
+  color: #2d3436;
+}
+
+.profile-info strong {
+  color: #0a3d62;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-actions .btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.profile-actions .btn.primary {
+  background-color: #0a3d62;
+  color: white;
+}
+
+.profile-actions .btn.secondary {
+  border: 2px solid #0a3d62;
+  color: #0a3d62;
+}
+
+.profile-actions .btn.logout {
+  background-color: #d63031;
+  color: white;
+}
+
+.profile-actions .btn:hover {
+  opacity: 0.85;
+}
+
+
+.how-it-works h2 {
+  text-align: center;
+  color: #0a3d62;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.how-it-works ol {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background-color: #0a3d62;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+/* ======== HERO (Ana Sayfa üst kısmı) ======== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #0a3d62, #3c6382);
+  color: white;
+  padding: 60px 80px;
+  border-radius: 0 0 25px 25px;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.btn.primary {
+  background-color: #ffffff;
+  color: #0a3d62;
+}
+
+.btn.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.hero-image img {
+  width: 420px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ======== FEATURES (alt kısım) ======== */
+.features {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f9fa;
+ margin-top: 40px;
+ margin-bottom: 60px;
+ gap:40px
+}
+
+.feature-box {
+  width: 400px;
+  background: white;
+  border: 2px solid #dfe6e9;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.feature-box:hover {
+  border-color: #0984e3;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.feature-box h3 {
+  font-size: 20px;
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 16px;
+  color: #636e72;
+}
+/* ======== Hakkında Sayfası ======== */
+.about {
+  padding: 60px 100px;
+  background-color: #ffffff;
+}
+
+.about h1 {
+  font-size: 36px;
+  color: #0a3d62;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  color: #2d3436;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-buttons {
+  margin-top: 30px;
+}
+
+.about-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 30%;
+  background: #f9fbfd;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #636e72;
+}
+
+/* ======== NOTLAR SAYFASI TASARIM ======== */
+.notes {
+  padding: 70px 100px;
+  background-color: #ffffff;
+}
+
+.notes h1 {
+  font-size: 36px;
+  color: #0a3d62;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.notes p {
+  font-size: 18px;
+  color: #2d3436;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.search-box input {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.search-box button {
+  background-color: #0a3d62;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.note-card {
+  width: 28%;
+  background: #f9fbfd;
+  border: 1px solid #dfe6e9;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-5px);
+}
+
+.note-card h3 {
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.note-card p {
+  color: #636e72;
+  margin-bottom: 15px;
+}
+
+.note-card a {
+  color: #0984e3;
+  text-decoration: none;
+  font-weight: 600;
+}
+/* ======== NOT YÜKLE SAYFASI ======== */
+.upload-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+  background-color: #f7faff;
+}
+
+.upload-container {
+  width: 500px;
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.upload-container h1 {
+  color: #0a3d62;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.upload-container p {
+  color: #636e72;
+  margin-bottom: 30px;
+  font-size: 17px;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.upload-form label {
+  font-weight: bold;
+  color: #2d3436;
+}
+
+.upload-form input[type="text"],
+.upload-form input[type="file"] {
+  padding: 10px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.btn-upload {
+  background-color: #0a3d62;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn-upload:hover {
+  background-color: #1e3799;
+}
+/* ======== GİRİŞ SAYFASI ======== */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  background: #f1f4f9;
+}
+
+.login-container {
+  width: 400px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h1 {
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  color: #636e72;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.login-form label {
+  font-weight: bold;
+  color: #2d3436;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.btn-login {
+  background-color: #0a3d62;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #1e3799;
+}
+
+.register-link {
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.register-link a {
+  color: #0a3d62;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* ======== KAYIT SAYFASI ======== */
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  background: #eef3f9;
+}
+
+.register-container {
+  width: 450px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.register-container h1 {
+  color: #0a3d62;
+  margin-bottom: 10px;
+}
+
+.register-container p {
+  color: #636e72;
+  margin-bottom: 30px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.register-form label {
+  font-weight: bold;
+  color: #2d3436;
+}
+
+.register-form input {
+  padding: 10px;
+  border: 1px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.btn-register {
+  background-color: #0a3d62;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-register:hover {
+  background-color: #1e3799;
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.login-link a {
+  color: #0a3d62;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
