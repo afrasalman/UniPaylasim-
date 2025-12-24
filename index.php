@@ -1,27 +1,27 @@
 <?php
+include 'dbconn.php';
 session_start();
 
 $korumali_sayfalar = ['Notlar', 'Upload'];
 $sayfa = isset($_GET['sayfa']) ? $_GET['sayfa'] : 'anasayfa';
 
-// kullanıcı giriş yapmadıysa ve o sayfayı kurunuyorsa
 if (in_array($sayfa, $korumali_sayfalar) && !isset($_SESSION['user_logged_in'])) {
-    // giriş yapmak istediği sayfaya geçici olarak kaydetmek için 
-    $_SESSION['redirect_after_login'] = $sayfa;
+  $_SESSION['redirect_after_login'] = $sayfa;
 
-    // giriş sayfasına yolloyoruz
-    header("Location: index.php?sayfa=Giris");
-    exit();
+  header("Location: index.php?sayfa=Giris");
+  exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UniPaylaşım</title>
   <link rel="stylesheet" href="stylesheet.css">
 </head>
+
 <body>
 
   <!-- Üst Menü -->
@@ -44,14 +44,14 @@ if (in_array($sayfa, $korumali_sayfalar) && !isset($_SESSION['user_logged_in']))
 
   <!-- Sayfa İçeriği -->
   <main>
-   <?php
-if(isset($_GET['sayfa'])){
-    $sayfa = $_GET['sayfa'];
-    include("sayfalar/".$sayfa.".php");
-}else{
-    include("sayfalar/Anasayfa.php");
-}
-?>
+    <?php
+    if (isset($_GET['sayfa'])) {
+      $sayfa = $_GET['sayfa'];
+      include("sayfalar/" . $sayfa . ".php");
+    } else {
+      include("sayfalar/Anasayfa.php");
+    }
+    ?>
   </main>
 
   <!-- Alt Bilgi -->
@@ -60,4 +60,5 @@ if(isset($_GET['sayfa'])){
   </footer>
 
 </body>
+
 </html>
