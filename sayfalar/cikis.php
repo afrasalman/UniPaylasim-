@@ -1,16 +1,9 @@
 <?php
-// Oturum başlatılmış mı kontrol ediyoruz
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Tüm oturum verilerini temizliyoruz
-$_SESSION = [];
-
-// Oturumu tamamen yok ediyoruz
+$_SESSION = array();
 session_destroy();
-
-// Kullanıcıyı giriş sayfasına yönlendiriyoruz
-header("Location: index.php?sayfa=Giris");
+echo "<script>window.location.href='index.php?sayfa=Giris';</script>";
 exit();
 ?>

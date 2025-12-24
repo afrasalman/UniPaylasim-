@@ -2,8 +2,8 @@
 
 // Kullanıcı giriş yapmamışsa, giriş sayfasına yönlendir
 if (!isset($_SESSION['user_logged_in'])) {
-    header("Location: index.php?sayfa=Giris");
-    exit();
+  header("Location: index.php?sayfa=Giris");
+  exit();
 }
 
 // Geçici örnek veriler (ileride veritabanından alınacak)

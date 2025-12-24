@@ -24,5 +24,5 @@
     <h3>👥 Topluluk</h3>
     <p>Diğer öğrencilerle iletişim kur ve yorum yap.</p>
   </div>
-  
+
 </section>

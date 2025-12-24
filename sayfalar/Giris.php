@@ -1,32 +1,35 @@
 <?php
-// session başlaması ve hatta olmaması için kontrol etmek
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
+if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true) {
+  echo "<script>window.location.href='index.php?sayfa=Anasayfa';</script>";
+  exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+  $email = htmlspecialchars($_POST['email']);
+  $password = $_POST['password'];
+  if (!empty($email) && !empty($password)) {
+    try {
+      $sorgu = $db->prepare("SELECT * FROM kullanicilar WHERE eposta = ?");
+      $sorgu->execute([$email]);
+      $kullanici = $sorgu->fetch(PDO::FETCH_ASSOC);
 
-    // giriş bilgileri örneği sonra değiştireceğiz
-    $dogru_email = "ogrenci@uni.edu.tr";
-    $dogru_sifre = "1234";
-
-    if ($email == $dogru_email && $password == $dogru_sifre) {
+      if ($kullanici && password_verify($password, $kullanici['sifre'])) {
         $_SESSION['user_logged_in'] = true;
-        $_SESSION['user_email'] = $email;
+        $_SESSION['user_id'] = $kullanici['id'];
+        $_SESSION['user_name'] = $kullanici['ad'] . " " . $kullanici['soyad'];
 
-        // eğer kullanıcı kurulan sayfaya girmeya çalışırse 
-        if (isset($_SESSION['redirect_after_login'])) {
-            $hedef = $_SESSION['redirect_after_login'];
-            unset($_SESSION['redirect_after_login']); 
-            header("Location: index.php?sayfa=$hedef");
-            exit();
-        }
-        header("Location: index.php?sayfa=Anasayfa");
+        echo "<script>window.location.href='index.php?sayfa=Anasayfa';</script>";
         exit();
-    } else {
-        $hata = "E-posta veya şifre yanlış!";
+      } else {
+        $hata = "E-posta veya şifre yanlış! Kayıtlı değilseniz lütfen Kayıt Ol sayfasından yeni bir hesap oluşturun.";
+      }
+    } catch (PDOException $e) {
+      $hata = "Hata oluştu.";
     }
+  }
 }
 ?>
 <section class="login-page">
@@ -35,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <p>UniPaylaşım hesabına giriş yaparak notlarını yükle veya indir.</p>
 
     <?php if (isset($hata)): ?>
-      <p style="color:red;"><?php echo $hata; ?></p>
+      <p style="color:red; text-align:center; font-weight:bold;"><?php echo $hata; ?></p>
     <?php endif; ?>
 
     <form class="login-form" method="POST" action="">
